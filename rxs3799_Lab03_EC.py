@@ -60,11 +60,7 @@ def tokenize(expr):
 
 # Convert infix tokens to RPN (Shunting Yard)
 def infix_to_rpn(tokens):
-    """
-    Shunting-Yard conversion.
-    Precedence (high → low): u- (4), *, /, % (3), +, - (2)
-    Associativity: u- is right-associative; others are left-associative.
-    """
+
     output = []
     ops = []
 
@@ -109,9 +105,7 @@ def infix_to_rpn(tokens):
 
 # Evaluate RPN
 def eval_rpn(tokens):
-    """
-    Evaluate RPN tokens including + - * / % and unary minus u-.
-    """
+
     stack = []
 
     for t in tokens:
