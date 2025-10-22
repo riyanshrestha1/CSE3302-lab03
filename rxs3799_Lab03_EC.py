@@ -5,7 +5,7 @@
 
 import os
 
-# 1) Tokenize input expression
+# Tokenize input expression
 
 def tokenize(expr):
     tokens = []
@@ -58,6 +58,7 @@ def tokenize(expr):
 
     return tokens
 
+# Convert infix tokens to RPN (Shunting Yard)
 def infix_to_rpn(tokens):
     """
     Shunting-Yard conversion.
@@ -106,6 +107,7 @@ def infix_to_rpn(tokens):
 
     return output
 
+# Evaluate RPN
 def eval_rpn(tokens):
     """
     Evaluate RPN tokens including + - * / % and unary minus u-.
