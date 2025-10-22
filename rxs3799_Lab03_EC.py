@@ -1,46 +1,13 @@
 # Name: Riyan Shrestha
-# ID: 1000XXXXXX
+# ID: 1002223799
 # Date: 2025-10-21
-# OS: Linux (Ubuntu, VS Code workspace)
-
-# --------------------------------------------------------------------
-# Lab 03 — Extra Credit
-#
-# What this program does:
-# 1) Reads algebraic (infix) expressions from input_RPN_EC.txt
-# 2) Converts each to Reverse Polish Notation (RPN)
-# 3) Evaluates the RPN
-# 4) Prints:
-#       RPN: <space-delimited RPN>
-#       Result: <value>
-#
-# Assumptions (per assignment):
-# - Numbers are single digits (0–9)
-# - Tokens may be separated by spaces; parentheses allowed
-# - Base operators: +, -, *, /
-#
-# Extra operators added (documented for GTA):
-# - %  : modulo (binary)
-# - u- : unary minus (e.g., -3, -(2+1))  ← printed as "u-" in RPN
-#
-# Notes:
-# - Division uses true division; if the result is an exact whole number,
-#   it prints as an int (e.g., 2 instead of 2.0).
-# - The code avoids hard-coded paths and handles line endings cross-platform.
-# --------------------------------------------------------------------
+# OS: Linux (VS Code workspace)
 
 import os
 
-# -----------------------------
 # 1) Tokenize input expression
-# -----------------------------
+
 def tokenize(expr):
-    """
-    Turn an infix string into a list of tokens.
-    Supports digits, + - * / % ( ) and unary minus (u-).
-    We treat '-' as unary when it appears at the start of the expression
-    or immediately after an operator or '('.
-    """
     tokens = []
     i = 0
     prev_kind = None  # one of: None, 'num', 'op', 'lparen', 'rparen'
@@ -91,9 +58,6 @@ def tokenize(expr):
 
     return tokens
 
-# -------------------------------------------
-# 2) Convert infix tokens to RPN (Shunting Yard)
-# -------------------------------------------
 def infix_to_rpn(tokens):
     """
     Shunting-Yard conversion.
@@ -142,9 +106,6 @@ def infix_to_rpn(tokens):
 
     return output
 
-# -----------------------------
-# 3) Evaluate RPN
-# -----------------------------
 def eval_rpn(tokens):
     """
     Evaluate RPN tokens including + - * / % and unary minus u-.
@@ -184,9 +145,6 @@ def eval_rpn(tokens):
         raise ValueError("RPN left extra items on the stack")
     return stack[0]
 
-# -----------------------------
-# 4) Main: read, convert, eval
-# -----------------------------
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     infile = os.path.join(here, "input_RPN_EC.txt")
